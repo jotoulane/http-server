@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package api.ping;
+
+import "google/api/annotations.proto";
+
+option go_package = "http-server/api/ping;ping";
+option java_multiple_files = true;
+option java_package = "api.ping";
+
+service Ping {
+	rpc GetPing (GetPingRequest) returns (GetPingReply){
+		option (google.api.http) = {
+      get: "/v1/ping"
+    };
+	}
+}
+
+message GetPingRequest {
+	string msg = 1;
+}
+message GetPingReply {
+	string msg = 1;
+}
